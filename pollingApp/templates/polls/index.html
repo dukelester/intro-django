@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls</title>
+</head>
+<body>
+{% if latest_update_posts %}
+<ul>
+    {% for question in latest_update_posts %}
+    <li style="color: cornflowerblue"><a href="{% url ' pollingApp:details ' question.id %}">{{ question.question_text }}</a> </li>
+{% endfor %}
+</ul>
+{% else %}
+<p style="color: orangered">No polls are available</p>
+
+{% endif %}
+<p style="background-color: black; color:green"> Total votes :: {{total_posts}}</p>
+{% if posts %}
+<ol style="align-items: center">
+    {% for post in posts %}
+    <li style="color: orangered">{{post}}</li>
+    {% endfor %}
+</ol>
+{% endif %}
+</body>
+</html>
