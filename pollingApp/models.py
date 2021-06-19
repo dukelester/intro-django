@@ -15,7 +15,10 @@ class Question(models.Model):
 
     def published_recently(self):
         # this will give the latest posts
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        # return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        # fixing the error
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 
 class Choice(models.Model):
